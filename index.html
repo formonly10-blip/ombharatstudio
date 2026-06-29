@@ -220,11 +220,47 @@
     <div class="container">
       <h2 class="section-title">Let's Create Together</h2>
       <div class="contact-wrapper">
+        
+        <!-- Phone - Direct Call -->
         <div class="contact-info">
-          <p><span>📞</span> <a href="tel:+91-7379827374">+91 7379827374</a></p>
-          <p><span>📍</span> 56 Bithoor Rd ,Kalyanpur, Kanpur, Uttar Pradesh</p>
-          <p><span>📧</span> <a href="prayagrajpm1000@gmail.com">prayagrajpm1000@gmail.com</a></p>
+          <p>
+            <span>📞</span> 
+            <a href="tel:+917379827374" class="contact-link phone-link">
+              +91 7379827374
+            </a>
+          </p>
         </div>
+
+        <!-- WhatsApp - Opens WhatsApp -->
+        <div class="contact-info">
+          <p>
+            <span>💬</span> 
+            <a href="https://wa.me/917379827374?text=Hi%20Om%20Bharat%20Studio%2C%20I%20want%20to%20book%20a%20service." target="_blank" class="contact-link whatsapp-link">
+              Chat on WhatsApp
+            </a>
+          </p>
+        </div>
+
+        <!-- Email - Opens Email App -->
+        <div class="contact-info">
+          <p>
+            <span>📧</span> 
+            <a href="mailto:prayagrajpm1000@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Om%20Bharat%20Studio%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="contact-link email-link">
+              prayagrajpm1000@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <!-- Address - Opens Google Maps -->
+        <div class="contact-info">
+          <p>
+            <span>📍</span> 
+            <a href="https://www.google.com/maps?q=56+Bithoor+Rd+Kalyanpur+Kanpur+Uttar+Pradesh" target="_blank" class="contact-link address-link">
+              56 Bithoor Rd, Kalyanpur, Kanpur, Uttar Pradesh
+            </a>
+          </p>
+        </div>
+
         <div class="contact-note">
           <p>Ready to book your session? Call us directly or drop a message – we'd love to hear from you.</p>
         </div>
@@ -245,7 +281,7 @@
   <!-- ========== CUSTOM JAVASCRIPT ========== -->
   <script>
     // -------------------------------------------------------------
-    // 1. THREE.JS PARTICLE BACKGROUND – FIXED for entire website
+    // 1. THREE.JS PARTICLE BACKGROUND – OPTIMIZED
     // -------------------------------------------------------------
     (function initParticles() {
       const container = document.getElementById('particle-canvas');
@@ -256,20 +292,20 @@
       const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
       camera.position.z = 30;
 
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
       renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(1); // Optimized for performance
       container.appendChild(renderer.domElement);
 
-      // Particles
+      // Particles - Reduced count for better performance
       const particlesGeometry = new THREE.BufferGeometry();
-      const count = 3000;
+      const count = 1200; // Reduced from 3000
       const positions = new Float32Array(count * 3);
       const colors = new Float32Array(count * 3);
 
       for (let i = 0; i < count * 3; i++) {
         positions[i] = (Math.random() - 0.5) * 90;
-        colors[i] = 0.8 + Math.random() * 0.2; // gold/white tones
+        colors[i] = 0.8 + Math.random() * 0.2;
         if (i % 3 === 1) colors[i] *= 0.6;
         if (i % 3 === 2) colors[i] *= 0.3;
       }
@@ -278,7 +314,7 @@
       particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.22,
+        size: 0.2,
         vertexColors: true,
         transparent: true,
         opacity: 0.9,
@@ -288,35 +324,31 @@
       const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
       scene.add(particlesMesh);
 
-let mouseX = 0,
-  mouseY = 0;
-let mouseUpdatePending = false;
-document.addEventListener('mousemove', (e) => {
-  if (mouseUpdatePending) return;
-  mouseUpdatePending = true;
-  requestAnimationFrame(() => {
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    mouseUpdatePending = false;
-  });
-});
-
+      // Mouse movement - Throttled for performance
+      let mouseX = 0,
+        mouseY = 0;
+      let mouseUpdatePending = false;
+      document.addEventListener('mousemove', (e) => {
+        if (mouseUpdatePending) return;
+        mouseUpdatePending = true;
+        requestAnimationFrame(() => {
+          mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+          mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+          mouseUpdatePending = false;
+        });
+      });
 
       // Animation loop
       function animate() {
-        particlesMesh.rotation.y += 0.0004;
+        particlesMesh.rotation.y += 0.0003;
         particlesMesh.rotation.x += 0.0001;
-
-        // subtle parallax following mouse
-        particlesMesh.rotation.y += mouseX * 0.0005;
-        particlesMesh.rotation.x += mouseY * 0.0003;
-
+        particlesMesh.rotation.y += mouseX * 0.0004;
+        particlesMesh.rotation.x += mouseY * 0.0002;
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
       }
       animate();
 
-      // Handle resize
       window.addEventListener('resize', () => {
         const w = window.innerWidth;
         const h = window.innerHeight;
@@ -327,166 +359,166 @@ document.addEventListener('mousemove', (e) => {
     })();
 
     // -------------------------------------------------------------
-// 2. 3D CAROUSEL GALLERY
-// -------------------------------------------------------------
-(function initCarousel() {
-  const container = document.getElementById('carousel');
-  const items = [{
-    title: 'Bridal look',
-    desc: 'Traditional elegance meets modern bridal photography.',
-    image: 'photo/bridal1.jpg',
-    
-  }, {
-    title: 'Asthetic look',
-    desc: 'High-fashion editorial portraits with a soft, artistic touch.',
-    image: 'photo/bridal2.jpg',
-    
-  }, {
-    title: 'Couple pic',
-    desc: 'Romantic couple shoot during the magical golden hour .',
-    image: 'photo/bridal3.jpg',
-    
-  }, {
-    title: 'Canded shots',
-    desc: 'Professional Canded ,with good quality images.',
-    image: 'photo/bridal4.jpg',
-    
-  }, {
-    title: 'Groom look',
-    desc: 'Vibrant, high‑energy shots celebrating culture and joy.',
-    image: 'photo/bridal5.jpg',
-    
-  }, {
-    title: 'Birthday celebration',
-    desc: 'Monochrome fine‑art portraits that focus on expression and texture.',
-    image: 'photo/bridal7.jpeg',
+    // 2. 3D CAROUSEL GALLERY
+    // -------------------------------------------------------------
+    (function initCarousel() {
+      const container = document.getElementById('carousel');
+      const items = [{
+        title: 'Bridal look',
+        desc: 'Traditional elegance meets modern bridal photography.',
+        image: 'photo/bridal1.jpg',
+        
+      }, {
+        title: 'Asthetic look',
+        desc: 'High-fashion editorial portraits with a soft, artistic touch.',
+        image: 'photo/bridal2.jpg',
+        
+      }, {
+        title: 'Couple pic',
+        desc: 'Romantic couple shoot during the magical golden hour .',
+        image: 'photo/bridal3.jpg',
+        
+      }, {
+        title: 'Canded shots',
+        desc: 'Professional Canded ,with good quality images.',
+        image: 'photo/bridal4.jpg',
+        
+      }, {
+        title: 'Groom look',
+        desc: 'Vibrant, high‑energy shots celebrating culture and joy.',
+        image: 'photo/bridal5.jpg',
+        
+      }, {
+        title: 'Birthday celebration',
+        desc: 'Monochrome fine‑art portraits that focus on expression and texture.',
+        image: 'photo/bridal7.jpeg',
 
-  }, {
-    title: 'Couple Cenematic',
-    desc: 'Cinematic love stories captured like a movie scene.',
-    image: 'photo/bridal8.jpg',
+      }, {
+        title: 'Couple Cenematic',
+        desc: 'Cinematic love stories captured like a movie scene.',
+        image: 'photo/bridal8.jpg',
 
-  }, {
-    title: 'Girl Pic',
-    desc: 'Elegant portraits celebrating feminine grace and beauty.',
-    image: 'photo/bridal9.jpg',
+      }, {
+        title: 'Girl Pic',
+        desc: 'Elegant portraits celebrating feminine grace and beauty.',
+        image: 'photo/bridal9.jpg',
 
-  }, {
-    title: 'Baby Boy',
-    desc: 'Precious moments of innocence and pure baby joy.',
-    image: 'photo/bridal10.jpg',
+      }, {
+        title: 'Baby Boy',
+        desc: 'Precious moments of innocence and pure baby joy.',
+        image: 'photo/bridal10.jpg',
 
-  }, {
-    title: 'Bride and Groom',
-    desc: 'Timeless wedding portraits of love, togetherness, and joy.',
-    image: 'photo/bridal11.jpg',
-    
-  }];
+      }, {
+        title: 'Bride and Groom',
+        desc: 'Timeless wedding portraits of love, togetherness, and joy.',
+        image: 'photo/bridal11.jpg',
+        
+      }];
 
-  const total = items.length;
-  const radius = 300;
-  const angleStep = (2 * Math.PI) / total;
-  let currentAngle = 0;
-  let isAutoRotate = true;
-  let rotationInterval;
+      const total = items.length;
+      const radius = 300;
+      const angleStep = (2 * Math.PI) / total;
+      let currentAngle = 0;
+      let isAutoRotate = true;
+      let rotationInterval;
 
-  // Create cards
-  items.forEach((item, index) => {
-    const card = document.createElement('div');
-    card.className = 'carousel-card';
-    card.innerHTML = `
-        <div class="card-image" style="background-image: url('${item.image}');"></div>
-        <div class="card-content">
-          <h3>${item.title}</h3>
-          <p>${item.desc}</p>
-        </div>
-      `;
-    container.appendChild(card);
-  });
+      // Create cards
+      items.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'carousel-card';
+        card.innerHTML = `
+          <div class="card-image" style="background-image: url('${item.image}');"></div>
+          <div class="card-content">
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
 
-  const cards = container.querySelectorAll('.carousel-card');
+      const cards = container.querySelectorAll('.carousel-card');
 
-  function positionCards(angle) {
-    cards.forEach((card, i) => {
-      const theta = angle + i * angleStep;
-      const x = radius * Math.sin(theta);
-      const z = radius * Math.cos(theta);
-      card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${-theta}deg)`;
-      const scale = 0.7 + 0.3 * (Math.cos(theta) * 0.5 + 0.5);
-      card.style.opacity = 0.5 + 0.5 * (Math.cos(theta) * 0.5 + 0.5);
-      card.style.zIndex = Math.round(scale * 100);
-    });
-  }
+      function positionCards(angle) {
+        cards.forEach((card, i) => {
+          const theta = angle + i * angleStep;
+          const x = radius * Math.sin(theta);
+          const z = radius * Math.cos(theta);
+          card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${-theta}deg)`;
+          const scale = 0.7 + 0.3 * (Math.cos(theta) * 0.5 + 0.5);
+          card.style.opacity = 0.5 + 0.5 * (Math.cos(theta) * 0.5 + 0.5);
+          card.style.zIndex = Math.round(scale * 100);
+        });
+      }
 
-  function rotateCarousel(delta) {
-    currentAngle += delta;
-    positionCards(currentAngle);
-  }
+      function rotateCarousel(delta) {
+        currentAngle += delta;
+        positionCards(currentAngle);
+      }
 
-  function startAutoRotate() {
-    if (rotationInterval) clearInterval(rotationInterval);
-    rotationInterval = setInterval(() => {
-      if (isAutoRotate) rotateCarousel(0.006);
-    }, 30);
-  }
+      function startAutoRotate() {
+        if (rotationInterval) clearInterval(rotationInterval);
+        rotationInterval = setInterval(() => {
+          if (isAutoRotate) rotateCarousel(0.006);
+        }, 50); // Increased from 30ms for better performance
+      }
 
-  // Manual controls
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    isAutoRotate = false;
-    rotateCarousel(-0.5);
-    setTimeout(() => { isAutoRotate = true; }, 3000);
-  });
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    isAutoRotate = false;
-    rotateCarousel(0.5);
-    setTimeout(() => { isAutoRotate = true; }, 3000);
-  });
+      // Manual controls
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        isAutoRotate = false;
+        rotateCarousel(-0.5);
+        setTimeout(() => { isAutoRotate = true; }, 3000);
+      });
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        isAutoRotate = false;
+        rotateCarousel(0.5);
+        setTimeout(() => { isAutoRotate = true; }, 3000);
+      });
 
-  // Drag to rotate
-  let isDragging = false,
-    startX = 0;
-  const wrapper = document.querySelector('.carousel-wrapper');
+      // Drag to rotate
+      let isDragging = false,
+        startX = 0;
+      const wrapper = document.querySelector('.carousel-wrapper');
 
-  wrapper.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
-    isAutoRotate = false;
-    wrapper.style.cursor = 'grabbing';
-  });
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    const deltaX = e.clientX - startX;
-    rotateCarousel(deltaX * 0.005);
-    startX = e.clientX;
-  });
-  window.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
+      wrapper.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        isAutoRotate = false;
+        wrapper.style.cursor = 'grabbing';
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - startX;
+        rotateCarousel(deltaX * 0.005);
+        startX = e.clientX;
+      });
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          wrapper.style.cursor = 'grab';
+          setTimeout(() => { isAutoRotate = true; }, 3000);
+        }
+      });
+
+      wrapper.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        isAutoRotate = false;
+      });
+      wrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.touches[0].clientX - startX;
+        rotateCarousel(deltaX * 0.005);
+        startX = e.touches[0].clientX;
+      });
+      wrapper.addEventListener('touchend', () => {
+        isDragging = false;
+        setTimeout(() => { isAutoRotate = true; }, 3000);
+      });
+
+      positionCards(0);
+      startAutoRotate();
       wrapper.style.cursor = 'grab';
-      setTimeout(() => { isAutoRotate = true; }, 3000);
-    }
-  });
-
-  wrapper.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startX = e.touches[0].clientX;
-    isAutoRotate = false;
-  });
-  wrapper.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const deltaX = e.touches[0].clientX - startX;
-    rotateCarousel(deltaX * 0.005);
-    startX = e.touches[0].clientX;
-  });
-  wrapper.addEventListener('touchend', () => {
-    isDragging = false;
-    setTimeout(() => { isAutoRotate = true; }, 3000);
-  });
-
-  positionCards(0);
-  startAutoRotate();
-  wrapper.style.cursor = 'grab';
-})();
+    })();
 
     // -------------------------------------------------------------
     // 3. HAMBURGER MENU TOGGLE
@@ -539,9 +571,6 @@ document.addEventListener('mousemove', (e) => {
       });
     })();
   </script>
-
-  
-
 
 </body>
 </html>
