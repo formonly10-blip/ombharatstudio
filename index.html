@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Om Bharat Studio – Premium Photography, Kalyanpur, Kanpur</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="msapplication-TileColor" content="#0a0a0a" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+</head>
+<body>
+
+  <!-- ============================================================
+   3D PARTICLE BACKGROUND – fixed across the whole site
+   ============================================================ -->
+  <div id="particle-canvas"></div>
+
+<!-- ========== STATIC NAVIGATION ========== -->
+<header class="navbar">
+  <a href="#home" class="logo-link">
+    <span class="logo-text">Om Bharat Studio</span>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#portfolio">Our Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+  <!-- ========== HOME – HERO ========== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+        <img src="photo/logo3.png" alt="Om Bharat Studio" class="hero-logo" />
+      <h1>Om Bharat Studio</h1>
+      <p>Where every frame tells a timeless story</p>
+      <a href="#portfolio" class="cta-button">Explore Our Work</a>
+    </div>
+  </section>
+
+  <!-- ========== OUR WORK – 3D GALLERY ========== -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <h2 class="section-title">Our Work</h2>
+      <p class="section-subtitle">
+        A curated collection of our finest captures – each with its own soul.
+      </p>
+
+      <!-- 3D Carousel Wrapper -->
+      <div class="carousel-wrapper">
+        <div class="carousel-container" id="carousel">
+          <!-- Cards will be injected by JavaScript -->
+        </div>
+        <!-- Navigation arrows -->
+        <button class="carousel-btn prev" id="prevBtn">‹</button>
+        <button class="carousel-btn next" id="nextBtn">›</button>
+      </div>
+    </div>
+  </section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services" class="services">
+  <div class="container">
+    <h2 class="section-title">Our Premium Services</h2>
+    <p class="section-subtitle">Click on any service to book instantly via WhatsApp or Call</p>
+
+    <div class="services-grid">
+      <!-- Each card is wrapped in a link that goes to the contact page -->
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">📸</div>
+          <h3>Wedding (Photo &amp; Video)</h3>
+          <p>Cinematic coverage &amp; candid moments – full-day photo + highlight film.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">💍</div>
+          <h3>Pre-Wedding &amp; Haldi</h3>
+          <p>Fun, romantic shoots and vibrant ritual coverage before the big day.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">🎂</div>
+          <h3>Birthday &amp; Parties</h3>
+          <p>Candid celebration photography – from intimate cakes to grand gatherings.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">🎥</div>
+          <h3>Reel / Short Video Shoot</h3>
+          <p>Instagram reels, promotional shorts, and engaging social media content.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">👶</div>
+          <h3>Maternity &amp; Newborn</h3>
+          <p>Beautiful, soft, and timeless portraits celebrating new beginnings.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Corporate &amp; Product</h3>
+          <p>Professional branding, product photography, and corporate event coverage.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">👗</div>
+          <h3>Fashion &amp; Portrait</h3>
+          <p>Personal branding, modeling portfolios, and high-end fashion editorials.</p>
+        </div>
+      </a>
+
+      <a href="contact-service.html" class="service-link">
+        <div class="service-card">
+          <div class="service-icon">🖼️</div>
+          <h3>Photo Frame &amp; Portrait</h3>
+          <p>Asthetic Photo Frames are avilable</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT SECTION ========== -->
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="section-title">About Om Bharat Studio</h2>
+    <p class="section-subtitle">Over two decades of timeless storytelling</p>
+
+    <div class="about-grid">
+      <!-- Bullet point 1 -->
+      <div class="about-item">
+        <span class="about-icon">✦</span>
+        <p><strong>Established 2000</strong> – rooted in Kalyanpur, Kanpur, with over 20 years of visual storytelling expertise.</p>
+      </div>
+
+      <!-- Bullet point 2 -->
+      <div class="about-item">
+        <span class="about-icon">✦</span>
+        <p>Every frame is a dialogue between <strong>light, emotion, and the human spirit</strong>.</p>
+      </div>
+
+      <!-- Bullet point 3 -->
+      <div class="about-item">
+        <span class="about-icon">✦</span>
+        <p>From intimate portraits to grand wedding sagas – our work is defined by <strong>timeless elegance</strong> and unwavering attention to detail.</p>
+      </div>
+
+      <!-- Bullet point 4 -->
+      <div class="about-item">
+        <span class="about-icon">✦</span>
+        <p>We don’t just photograph moments – we <strong>preserve legacies</strong>, turning fleeting instants into heirlooms.</p>
+      </div>
+
+      <!-- Bullet point 5 -->
+      <div class="about-item">
+        <span class="about-icon">✦</span>
+        <p>We blend <strong>classical composition</strong> with a modern, cinematic eye – inspired by the cultural richness of Kanpur.</p>
+      </div>
+
+      <!-- Bullet point 6 -->
+      <div class="about-item">
+        <span class="about-icon">✦</span>
+        <p>Every project – personal or commercial – receives the same <strong>passion and precision</strong> that defines our signature.</p>
+      </div>
+
+      <!-- Bullet point 7 -->
+      <div class="about-item highlight">
+        <span class="about-icon">◆</span>
+        <p><strong>Om Bharat Studio</strong> – where your story meets our artistry, and memories are crafted to last forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Let’s Create Together</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p><span>📞</span> <a href="tel:+91-7379827374">+91 7379827374</a></p>
+          <p><span>📍</span> 56 Bithoor Rd ,Kalyanpur, Kanpur, Uttar Pradesh</p>
+          <p><span>📧</span> <a href="prayagrajpm1000@gmail.com">prayagrajpm1000@gmail.com</a></p>
+        </div>
+        <div class="contact-note">
+          <p>Ready to book your session? Call us directly or drop a message – we’d love to hear from you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Om Bharat Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ========== THREE.JS (CDN) ========== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- ========== CUSTOM JAVASCRIPT ========== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. THREE.JS PARTICLE BACKGROUND – FIXED for entire website
+    // -------------------------------------------------------------
+    (function initParticles() {
+      const container = document.getElementById('particle-canvas');
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+      camera.position.z = 30;
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      // Particles
+      const particlesGeometry = new THREE.BufferGeometry();
+      const count = 3000;
+      const positions = new Float32Array(count * 3);
+      const colors = new Float32Array(count * 3);
+
+      for (let i = 0; i < count * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 90;
+        colors[i] = 0.8 + Math.random() * 0.2; // gold/white tones
+        if (i % 3 === 1) colors[i] *= 0.6;
+        if (i % 3 === 2) colors[i] *= 0.3;
+      }
+
+      particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.22,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending,
+      });
+
+      const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particlesMesh);
+
+      // Mouse movement for parallax effect
+      let mouseX = 0,
+        mouseY = 0;
+      document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      });
+
+      // Animation loop
+      function animate() {
+        particlesMesh.rotation.y += 0.0004;
+        particlesMesh.rotation.x += 0.0001;
+
+        // subtle parallax following mouse
+        particlesMesh.rotation.y += mouseX * 0.0005;
+        particlesMesh.rotation.x += mouseY * 0.0003;
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      // Handle resize
+      window.addEventListener('resize', () => {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+    })();
+
+    // -------------------------------------------------------------
+// 2. 3D CAROUSEL GALLERY
+// -------------------------------------------------------------
+(function initCarousel() {
+  const container = document.getElementById('carousel');
+  const items = [{
+    title: 'Bridal look',
+    desc: 'Traditional elegance meets modern bridal photography.',
+    image: 'photo/bridal1.jpg',
+    
+  }, {
+    title: 'Asthetic look',
+    desc: 'High-fashion editorial portraits with a soft, artistic touch.',
+    image: 'photo/bridal2.jpg',
+    
+  }, {
+    title: 'Couple pic',
+    desc: 'Romantic couple shoot during the magical golden hour .',
+    image: 'photo/bridal3.jpg',
+    
+  }, {
+    title: 'Canded shots',
+    desc: 'Professional Canded ,with good quality images.',
+    image: 'photo/bridal4.jpg',
+    
+  }, {
+    title: 'Groom look',
+    desc: 'Vibrant, high‑energy shots celebrating culture and joy.',
+    image: 'photo/bridal5.jpg',
+    
+  }, {
+    title: 'Birthday celebration',
+    desc: 'Monochrome fine‑art portraits that focus on expression and texture.',
+    image: 'photo/bridal7.jpeg',
+
+  }, {
+    title: 'Couple Cenematic',
+    desc: 'Cinematic love stories captured like a movie scene.',
+    image: 'photo/bridal8.jpg',
+
+  }, {
+    title: 'Girl Pic',
+    desc: 'Elegant portraits celebrating feminine grace and beauty.',
+    image: 'photo/bridal9.jpg',
+
+  }, {
+    title: 'Baby Boy',
+    desc: 'Precious moments of innocence and pure baby joy.',
+    image: 'photo/bridal10.jpg',
+
+  }, {
+    title: 'Bride and Groom',
+    desc: 'Timeless wedding portraits of love, togetherness, and joy.',
+    image: 'photo/bridal11.jpg',
+    
+  }];
+
+  const total = items.length;
+  const radius = 300;
+  const angleStep = (2 * Math.PI) / total;
+  let currentAngle = 0;
+  let isAutoRotate = true;
+  let rotationInterval;
+
+  // Create cards
+  items.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'carousel-card';
+    card.innerHTML = `
+        <div class="card-image" style="background-image: url('${item.image}');"></div>
+        <div class="card-content">
+          <h3>${item.title}</h3>
+          <p>${item.desc}</p>
+        </div>
+      `;
+    container.appendChild(card);
+  });
+
+  const cards = container.querySelectorAll('.carousel-card');
+
+  function positionCards(angle) {
+    cards.forEach((card, i) => {
+      const theta = angle + i * angleStep;
+      const x = radius * Math.sin(theta);
+      const z = radius * Math.cos(theta);
+      card.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${-theta}deg)`;
+      const scale = 0.7 + 0.3 * (Math.cos(theta) * 0.5 + 0.5);
+      card.style.opacity = 0.5 + 0.5 * (Math.cos(theta) * 0.5 + 0.5);
+      card.style.zIndex = Math.round(scale * 100);
+    });
+  }
+
+  function rotateCarousel(delta) {
+    currentAngle += delta;
+    positionCards(currentAngle);
+  }
+
+  function startAutoRotate() {
+    if (rotationInterval) clearInterval(rotationInterval);
+    rotationInterval = setInterval(() => {
+      if (isAutoRotate) rotateCarousel(0.006);
+    }, 30);
+  }
+
+  // Manual controls
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    isAutoRotate = false;
+    rotateCarousel(-0.5);
+    setTimeout(() => { isAutoRotate = true; }, 3000);
+  });
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    isAutoRotate = false;
+    rotateCarousel(0.5);
+    setTimeout(() => { isAutoRotate = true; }, 3000);
+  });
+
+  // Drag to rotate
+  let isDragging = false,
+    startX = 0;
+  const wrapper = document.querySelector('.carousel-wrapper');
+
+  wrapper.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    isAutoRotate = false;
+    wrapper.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - startX;
+    rotateCarousel(deltaX * 0.005);
+    startX = e.clientX;
+  });
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      wrapper.style.cursor = 'grab';
+      setTimeout(() => { isAutoRotate = true; }, 3000);
+    }
+  });
+
+  wrapper.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    isAutoRotate = false;
+  });
+  wrapper.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const deltaX = e.touches[0].clientX - startX;
+    rotateCarousel(deltaX * 0.005);
+    startX = e.touches[0].clientX;
+  });
+  wrapper.addEventListener('touchend', () => {
+    isDragging = false;
+    setTimeout(() => { isAutoRotate = true; }, 3000);
+  });
+
+  positionCards(0);
+  startAutoRotate();
+  wrapper.style.cursor = 'grab';
+})();
+  </script>
+</body>
+</html>
