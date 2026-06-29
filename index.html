@@ -35,9 +35,18 @@
 <!-- ========== STATIC NAVIGATION ========== -->
 <header class="navbar">
   <a href="#home" class="logo-link">
+    
     <span class="logo-text">Om Bharat Studio</span>
   </a>
-  <nav>
+
+  <!-- Hamburger Menu Button -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+
+  <nav class="nav-menu" id="navMenu">
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#portfolio">Our Work</a></li>
@@ -182,7 +191,7 @@
       <!-- Bullet point 4 -->
       <div class="about-item">
         <span class="about-icon">✦</span>
-        <p>We don’t just photograph moments – we <strong>preserve legacies</strong>, turning fleeting instants into heirlooms.</p>
+        <p>We don't just photograph moments – we <strong>preserve legacies</strong>, turning fleeting instants into heirlooms.</p>
       </div>
 
       <!-- Bullet point 5 -->
@@ -209,7 +218,7 @@
   <!-- ========== CONTACT ========== -->
   <section id="contact" class="contact">
     <div class="container">
-      <h2 class="section-title">Let’s Create Together</h2>
+      <h2 class="section-title">Let's Create Together</h2>
       <div class="contact-wrapper">
         <div class="contact-info">
           <p><span>📞</span> <a href="tel:+91-7379827374">+91 7379827374</a></p>
@@ -217,7 +226,7 @@
           <p><span>📧</span> <a href="prayagrajpm1000@gmail.com">prayagrajpm1000@gmail.com</a></p>
         </div>
         <div class="contact-note">
-          <p>Ready to book your session? Call us directly or drop a message – we’d love to hear from you.</p>
+          <p>Ready to book your session? Call us directly or drop a message – we'd love to hear from you.</p>
         </div>
       </div>
     </div>
@@ -279,13 +288,19 @@
       const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
       scene.add(particlesMesh);
 
-      // Mouse movement for parallax effect
-      let mouseX = 0,
-        mouseY = 0;
-      document.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-      });
+let mouseX = 0,
+  mouseY = 0;
+let mouseUpdatePending = false;
+document.addEventListener('mousemove', (e) => {
+  if (mouseUpdatePending) return;
+  mouseUpdatePending = true;
+  requestAnimationFrame(() => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+    mouseUpdatePending = false;
+  });
+});
+
 
       // Animation loop
       function animate() {
@@ -472,6 +487,61 @@
   startAutoRotate();
   wrapper.style.cursor = 'grab';
 })();
+
+    // -------------------------------------------------------------
+    // 3. HAMBURGER MENU TOGGLE
+    // -------------------------------------------------------------
+    (function initHamburger() {
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('navMenu');
+      const navLinks = navMenu.querySelectorAll('a');
+
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'nav-overlay';
+      document.body.appendChild(overlay);
+
+      // Toggle menu
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      }
+
+      // Open/close on hamburger click
+      hamburger.addEventListener('click', toggleMenu);
+
+      // Close menu when overlay is clicked
+      overlay.addEventListener('click', toggleMenu);
+
+      // Close menu when a link is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navMenu.classList.contains('active')) {
+            toggleMenu();
+          }
+        });
+      });
+
+      // Close menu on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+
+      // Close menu on window resize (if switching to desktop)
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    })();
   </script>
+
+  
+
+
 </body>
 </html>
