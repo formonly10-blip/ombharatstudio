@@ -61,7 +61,7 @@ a {
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  pointer-events: none; /* allow clicks to pass through */
+  pointer-events: none;
 }
 
 /* ============================================
@@ -78,6 +78,7 @@ a {
   padding: 1.2rem 3rem;
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(212, 163, 115, 0.15);
   z-index: 1000;
   transition: background 0.3s ease;
@@ -135,12 +136,9 @@ a {
   border-bottom-color: #d4a373;
 }
 
-
 /* ============================================
    HAMBURGER MENU - Mobile & Tablet
    ============================================ */
-
-/* Hide hamburger on desktop */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -162,7 +160,6 @@ a {
   transform-origin: center;
 }
 
-/* Hamburger animation (turns into X when active) */
 .hamburger.active .hamburger-line:nth-child(1) {
   transform: rotate(45deg) translate(5px, 6px);
 }
@@ -192,6 +189,7 @@ a {
     height: 100vh;
     background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 5rem 2rem 2rem;
     transition: right 0.4s ease;
     z-index: 999;
@@ -225,7 +223,6 @@ a {
     padding-left: 10px;
   }
 
-  /* Overlay when menu is open */
   .nav-overlay {
     display: none;
     position: fixed;
@@ -259,6 +256,7 @@ a {
     height: 100vh;
     background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     padding: 5rem 2.5rem 2rem;
     transition: right 0.4s ease;
     z-index: 999;
@@ -347,6 +345,7 @@ a {
     display: none !important;
   }
 }
+
 /* ============================================
    HERO SECTION
    ============================================ */
@@ -359,11 +358,11 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: rgba(0, 0, 0, 0.35); /* lets particles show through */
+  background: rgba(0, 0, 0, 0.35);
 }
 
 .hero-logo {
-  max-height: 300px;     /* adjust size as needed */
+  max-height: 300px;
   width: auto;
   display: block;
   margin: 0 auto 1.5rem auto;
@@ -415,7 +414,7 @@ a {
 }
 
 /* ============================================
-   PORTFOLIO / 3D CAROUSEL
+   PORTFOLIO / 3D CAROUSEL - MOBILE OPTIMIZED
    ============================================ */
 .portfolio {
   position: relative;
@@ -423,6 +422,7 @@ a {
   padding: 6rem 0 8rem;
   background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .carousel-wrapper {
@@ -434,8 +434,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1000px;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .carousel-container {
@@ -443,7 +445,8 @@ a {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.1s ease-out;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .carousel-card {
@@ -458,11 +461,22 @@ a {
   background: #1c1814;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-  transition: transform 0.15s ease, opacity 0.15s ease;
-  backface-visibility: hidden;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
   border: 1px solid rgba(212, 163, 115, 0.15);
   display: flex;
   flex-direction: column;
+  will-change: transform, opacity;
+  contain: layout style paint;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transition: none;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.carousel-card.animating {
+  transition: transform 0.08s linear, opacity 0.08s linear;
+  -webkit-transition: transform 0.08s linear, opacity 0.08s linear;
 }
 
 .card-image {
@@ -471,6 +485,9 @@ a {
   background-size: cover;
   background-position: center;
   background-color: #2a241e;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: auto;
 }
 
 .card-content {
@@ -522,6 +539,7 @@ a {
   transform: translateY(-50%);
   background: rgba(212, 163, 115, 0.15);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(212, 163, 115, 0.25);
   color: #f0ece7;
   font-size: 2.5rem;
@@ -535,6 +553,8 @@ a {
   align-items: center;
   justify-content: center;
   line-height: 1;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .carousel-btn:hover {
@@ -543,9 +563,14 @@ a {
   transform: translateY(-50%) scale(1.05);
 }
 
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
 .carousel-btn.prev {
   left: 10px;
 }
+
 .carousel-btn.next {
   right: 10px;
 }
@@ -571,6 +596,7 @@ a {
   border-left: 4px solid #d4a373;
   transition: all 0.3s ease;
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   height: 100%;
   cursor: pointer;
 }
@@ -607,6 +633,7 @@ a {
   gap: 2rem;
   margin-top: 2rem;
 }
+
 /* ============================================
    ABOUT SECTION – BULLET POINT STYLES
    ============================================ */
@@ -616,6 +643,7 @@ a {
   padding: 6rem 0;
   background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .about-grid {
@@ -664,7 +692,6 @@ a {
   font-weight: 600;
 }
 
-/* Highlight the last (7th) bullet */
 .about-item.highlight {
   background: rgba(212, 163, 115, 0.1);
   border-left-color: #d4a373;
@@ -682,26 +709,6 @@ a {
 }
 
 /* ============================================
-   RESPONSIVE – ABOUT
-   ============================================ */
-@media (max-width: 768px) {
-  .about-item {
-    padding: 0.6rem 1rem;
-    gap: 0.8rem;
-  }
-  .about-item p {
-    font-size: 0.95rem;
-  }
-  .about-item.highlight p {
-    font-size: 1rem;
-  }
-  .about-icon {
-    font-size: 1rem;
-    min-width: 1.5rem;
-  }
-}
-
-/* ============================================
    CONTACT
    ============================================ */
 .contact {
@@ -710,6 +717,7 @@ a {
   padding: 6rem 0 8rem;
   background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .contact-wrapper {
@@ -749,6 +757,7 @@ a {
   flex: 1;
   min-width: 260px;
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .contact-note p {
@@ -769,6 +778,7 @@ footer {
   font-size: 0.9rem;
   background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 /* ============================================
@@ -780,47 +790,81 @@ footer {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
+
   .logo {
     font-size: 1.2rem;
   }
-  .navbar nav ul {
-    gap: 1.2rem;
-  }
-  .navbar nav ul li a {
-    font-size: 0.75rem;
-  }
+
   .hero-content h1 {
     font-size: 3.2rem;
   }
+
   .hero-content p {
     font-size: 1rem;
   }
+
   .section-title {
     font-size: 2.2rem;
   }
+
+  /* Carousel mobile optimizations */
   .carousel-wrapper {
     height: 400px;
+    perspective: 900px;
+    -webkit-perspective: 900px;
   }
+
   .carousel-card {
     width: 200px;
     height: 310px;
     margin-left: -100px;
     margin-top: -155px;
+    border-radius: 12px;
   }
+
+  .carousel-card.animating {
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    -webkit-transition: transform 0.1s linear, opacity 0.1s linear;
+  }
+
   .card-content h3 {
     font-size: 1rem;
   }
+
   .carousel-btn {
     width: 42px;
     height: 42px;
     font-size: 1.8rem;
   }
+
   .carousel-btn.prev {
     left: 2px;
   }
+
   .carousel-btn.next {
     right: 2px;
   }
+
+  /* About mobile */
+  .about-item {
+    padding: 0.6rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .about-item p {
+    font-size: 0.95rem;
+  }
+
+  .about-item.highlight p {
+    font-size: 1rem;
+  }
+
+  .about-icon {
+    font-size: 1rem;
+    min-width: 1.5rem;
+  }
+
+  /* Contact mobile */
   .contact-wrapper {
     flex-direction: column;
     gap: 2rem;
@@ -828,39 +872,75 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .navbar nav ul {
-    gap: 0.8rem;
-  }
   .hero-content h1 {
     font-size: 2.4rem;
   }
+
+  /* Carousel small phone optimizations */
+  .carousel-wrapper {
+    height: 320px;
+    perspective: 800px;
+    -webkit-perspective: 800px;
+  }
+
   .carousel-card {
     width: 160px;
     height: 260px;
     margin-left: -80px;
     margin-top: -130px;
+    border-radius: 10px;
   }
-  .carousel-wrapper {
-    height: 320px;
+
+  .carousel-card.animating {
+    transition: transform 0.12s linear, opacity 0.12s linear;
+    -webkit-transition: transform 0.12s linear, opacity 0.12s linear;
   }
 }
 
-
 /* Extra small phones (below 360px) */
 @media (max-width: 360px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .logo-text {
+    font-size: 0.75rem;
+  }
+
+  /* Carousel extra small phone optimizations */
+  .carousel-wrapper {
+    height: 260px;
+    perspective: 700px;
+    -webkit-perspective: 700px;
+  }
+
   .carousel-card {
     width: 130px;
     height: 210px;
     margin-left: -65px;
     margin-top: -105px;
+    border-radius: 8px;
   }
-  .carousel-wrapper {
-    height: 260px;
+
+  .card-image {
+    height: 50%;
   }
-  .hero-content h1 {
-    font-size: 1.8rem;
+
+  .card-content {
+    padding: 0.6rem 0.8rem;
   }
-  .logo-text {
-    font-size: 0.75rem;
+
+  .card-content h3 {
+    font-size: 0.85rem;
+  }
+
+  .card-content p {
+    font-size: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .carousel-card.animating {
+    transition: transform 0.14s linear, opacity 0.14s linear;
+    -webkit-transition: transform 0.14s linear, opacity 0.14s linear;
   }
 }
